@@ -174,7 +174,6 @@ function inicializar(){
  /**FUNCION PARA OBTENER NUMERO DE ESTUDIANTES POR VALIDAR Y MANDAR A CREAR PAGINACION PARA LA VISTA DE LA INFORMACIÓN DEL ESTUDIANTE */
 function numeroEstudiantesInfo() {
     $.get("../../controller/coordinador/cantidad-obs-info-est.php", function (e) {
-        console.log("Respuesta del servidor:", e); // <-- Agregar esto
         var cantidad_est = parseInt(e.trim(), 10);
 
         if (isNaN(cantidad_est) || cantidad_est <= 0) {
@@ -216,7 +215,6 @@ function mostrarObservacionesInfo(limiter, offset) {
 
  
     $.get("../../controller/coordinador/lista-info.php", function (e) {
-        console.log("Respuesta del backend:", e);
         let estudiantesInfo = JSON.parse(e);
         let template = "";
  
@@ -243,41 +241,41 @@ $(document).on("click", "#ir-buscar", function(){
    let search = $("#valor-buscar").val();
    const getData = {
 
-       buscador: search,
-       rol: ROL_COORDINADOR
+       buscador: search
 
    }
 
    if(search == null || search == 0 || /^\s+$/.test(search)){
        
        inicializar();
-       $("#paginacion").show();
+       $("#paginacionInfo").show();
 
    } else {
        
        $.get("../../controller/coordinador/buscar-observaciones.php", getData, function (e) {
-
+        console.log(e);
            let estudiante = JSON.parse(e);
+           
            let template="";
 
            estudiante.forEach(estudiante => {
             template +=`
-                <tr user-id="${estudiante.id}" scope="row">
-                    <th>${estudiante.id}</th>
+                <tr user-id="${estudiante.id_estudiante}" scope="row">
+                    <th>${estudiante.id_estudiante}</th>
                     <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
                     <td>${estudiante.numero_cuenta_estudiante}</td>
-                    <td class="idComentario">${estudiante.id_respuesta_documento}</td>
-                    <td class="comentario">${estudiante.descripcion}</td>
+                    <td>${estudiante.id_comentario}</td>
+                    <td>${estudiante.comentario}</td>
                 </tr>
             `
            });
-           $("#estudiantes").html(template);
+           $("#estudiantes-info").html(template);
            
 
 
        })
 
-       $("#paginacion").hide();
+       $("#paginacionInfo").hide();
 
    }
    
@@ -289,7 +287,7 @@ $(document).on("click", "#ir-buscar", function(){
 $(document).on("click", "#dejar-buscar", function(){
 
    inicializar();
-   $("#paginacion").show();
+   $("#paginacionInfo").show();
    
 });
 

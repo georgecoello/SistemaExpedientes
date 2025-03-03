@@ -281,35 +281,6 @@ function crearPaginacionInfo(estudiantes) {
         }
     });
 }
-
-/**FUNCION PARA MOSTRAR ESTUDIANTES CON PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
-function mostrarObservacionesInfo(limiter, offset) {
-    const getData = {
-        limit: limiter,
-        offset: offset,
-        rol: ROL_COORDINADOR
-    }
- 
-    $.get("../../controller/coordinador/lista-documentos.php", getData, function (e) {
-        console.log("Respuesta del backend:", e);
-        let estudiantesInfo = JSON.parse(e);
-        let template = "";
- 
-        estudiantesInfo.forEach(estudiantesInfo => {
-            template += `
-                 <tr user-id="${estudiantesInfo.id_estudiante}">
-                     <th>${estudiantesInfo.id_estudiante}</th>
-                     <td>${estudiantesInfo.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
-                     <td>${estudiantesInfo.numero_cuenta}</td>
-                     <td>${estudiantesInfo.id_comentario}</td>
-                     <td>${estudiantesInfo.comentario}</td>
-                 </tr>
-             `;
-        });
- 
-        $("#estudiantes-info").html(template);
-    });
- }
  
 
 /**BUSCADOR */
@@ -330,19 +301,19 @@ $(document).on("click", "#ir-buscar", function(){
 
    } else {
        
-       $.get("../../controller/coordinador/buscar-observaciones.php", getData, function (e) {
+       $.get("../../controller/coordinador/buscar-observaciones-doc.php", getData, function (e) {
 
            let estudiante = JSON.parse(e);
            let template="";
 
            estudiante.forEach(estudiante => {
             template +=`
-                <tr user-id="${estudiante.id}" scope="row">
-                    <th>${estudiante.id}</th>
-                    <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
-                    <td>${estudiante.numero_cuenta_estudiante}</td>
-                    <td class="idComentario">${estudiante.id_respuesta_documento}</td>
-                    <td class="comentario">${estudiante.descripcion}</td>
+                <tr user-id="${estudiante.id_estudiante}">
+                     <th>${estudiante.id_estudiante}</th>
+                     <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
+                     <td>${estudiante.numero_cuenta}</td>
+                     <td>${estudiante.id_respuesta}</td>
+                     <td>${estudiante.descripcion}</td>
                 </tr>
             `
            });

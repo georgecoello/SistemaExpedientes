@@ -4,7 +4,7 @@
 
     $buscador = $_GET["buscador"];
 
-    $sp = "call SP_BUSCAROBSERVACIONES('$buscador%');";
+    $sp = "call SP_BUSCAROBSERVACIONESDOC('$buscador%');";
 
     $query = mysqli_query($connection, $sp);
 
