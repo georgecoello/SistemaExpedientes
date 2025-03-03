@@ -170,7 +170,6 @@ function inicializar(){
     numeroEstudiantes();                                    //Se manda a obtener el numero de estudiantes que aun no se valida
     mostrarObservaciones(LIMIT_STUDENTS_TABLE, offset);       //Manda a mostrar los estudinates
     numeroEstudiantesInfo();
-    mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset); // Llama a la función para mostrar observaciones
 }
 
 /**FUNCION PARA OBTENER NUMERO DE ESTUDIANTES POR VALIDAR Y MANDAR A CREAR PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
@@ -277,7 +276,7 @@ function crearPaginacionInfo(estudiantes) {
         visiblePages: 5,
         onPageClick: function (event, page) {
             var offset = (page - 1) * LIMIT_STUDENTS_TABLE;
-            mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset); // Llama a la función para mostrar observaciones
+            
         }
     });
 }
@@ -286,49 +285,48 @@ function crearPaginacionInfo(estudiantes) {
 /**BUSCADOR */
 $(document).on("click", "#ir-buscar", function(){
 
-   let search = $("#valor-buscar").val();
-   const getData = {
-
-       buscador: search,
-       rol: ROL_COORDINADOR
-
-   }
-
-   if(search == null || search == 0 || /^\s+$/.test(search)){
-       
-       inicializar();
-       $("#paginacion").show();
-
-   } else {
-       
-       $.get("../../controller/coordinador/buscar-observaciones-doc.php", getData, function (e) {
-
-           let estudiante = JSON.parse(e);
-           let template="";
-
-           estudiante.forEach(estudiante => {
-            template +=`
-                <tr user-id="${estudiante.id_estudiante}">
+    let search = $("#valor-buscar").val();
+    const getData = {
+ 
+        buscador: search
+ 
+    }
+ 
+    if(search == null || search == 0 || /^\s+$/.test(search)){
+        
+        inicializar();
+        $("#paginacionInfo").show();
+ 
+    } else {
+        
+        $.get("../../controller/coordinador/buscar-observaciones-doc.php", getData, function (e) {
+         co
+            let estudiante = JSON.parse(e);
+            
+            let template="";
+ 
+            estudiante.forEach(estudiante => {
+             template +=`
+                 <tr user-id="${estudiante.id_estudiante}" scope="row">
                      <th>${estudiante.id_estudiante}</th>
                      <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
-                     <td>${estudiante.numero_cuenta}</td>
+                     <td>${estudiante.numero_cuenta_estudiante}</td>
                      <td>${estudiante.id_respuesta}</td>
                      <td>${estudiante.descripcion}</td>
-                </tr>
-            `
-           });
-           $("#estudiantes").html(template);
-           
-
-
-       })
-
-       $("#paginacion").hide();
-
-   }
-   
-});
-
+                 </tr>
+             `
+            });
+            $("#estudiantes").html(template);
+            
+ 
+ 
+        })
+ 
+        $("#paginacion").hide();
+ 
+    }
+    
+ });
 
 
 /**DEJAR DE BUSCAR Y MOSTRAR TABLA NORMAL */
@@ -338,5 +336,3 @@ $(document).on("click", "#dejar-buscar", function(){
    $("#paginacion").show();
    
 });
-
-

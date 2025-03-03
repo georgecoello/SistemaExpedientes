@@ -253,7 +253,7 @@ $(document).on("click", "#ir-buscar", function(){
    } else {
        
        $.get("../../controller/coordinador/buscar-observaciones.php", getData, function (e) {
-        console.log(e);
+        co
            let estudiante = JSON.parse(e);
            
            let template="";
