@@ -15,9 +15,7 @@
  * 12: Solvencia de registro 
  * 13: Timbre de contratación 
  * 14: Fotografía ovalada 
- * 15: Constancia de Conducta y Mención Honrífica por el Coordinador
- * 16: Solicitud de Honores Académicos por Estudiante
- * 17: Justificación de Mención Honorífica
+ * 15: Solicitud de Honores Académicos por Estudiante
  * 
  */
 

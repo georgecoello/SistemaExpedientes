@@ -324,7 +324,7 @@
                                             </tr>
                                             <tr>
                                                 <td class="doc-estudiante" colspan="4">
-                                                <small><b>En caso de tener más de una constancia de Horas Artículo 140 (VOAE), seleccione el botón para ingresarlas, y luego suba el documento generado.</b> <br><b style="color: red;">NOTA: Debe seleccionar la casilla del ámbito, para indicar que tipo de Actividad está subiendo y de esta forma indicará la cantidad de Horas que tiene la misma.</b></small><br>
+                                                <small><b>En caso de tener más de una constancia de Horas Artículo 140 (VOAE), seleccione el botón para ingresarlas, y luego suba el documento generado.</b></small><br>
                                                 <br>
                                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#activityModal" style="color: white;">
                                                         <small><b>Subir archivos Horas Artículo 140</b></small>
@@ -464,20 +464,7 @@
                                                 </td>
                                             </tr>
 
-                                           
                                             <tr codigo='15' class='docs-excelencia'>
-                                                <td> <small>Constancia de Conducta y Mención Honrífica por el Coordinador <br>(.pdf)</small> </td>
-                                                <td class='doc-estudiante'>
-                                                    <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-info btn-sm subir"><b>Subir</b></button>
-                                                </td>
-                                                <td>
-                                                    <span id='sub-doc-15' class="badge badge-danger"><b>Sin subir</b></span>
-                                                </td>
-                                            </tr>
-                                            <tr codigo='16' class='docs-excelencia'>
                                                 <td> <small>Solicitud de Honores Académicos por Estudiante <br>(.pdf)</small> </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -487,18 +474,6 @@
                                                 </td>
                                                 <td>
                                                     <span id='sub-doc-16' class="badge badge-danger"><b>Sin subir</b></span>
-                                                </td>
-                                            </tr>
-                                            <tr codigo='17' class='docs-excelencia'>
-                                                <td> <small>Justificación de Mención Honorífica <br>(.pdf)</small> </td>
-                                                <td class='doc-estudiante'>
-                                                    <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-info btn-sm subir"><b>Subir</b></button>
-                                                </td>
-                                                <td>
-                                                    <span id='sub-doc-17' class="badge badge-danger"><b>Sin subir</b></span>
                                                 </td>
                                             </tr>
                                             
@@ -541,6 +516,9 @@
                 <div class="modal-header">
                     <h5 class="modal-title" id="activityModalLabel">Registro de Actividades de Artículo 140 (VOAE)</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div style="padding-left: 3vw; padding-right: 3vw;">
+                    <br><b style="color: red;">NOTA: Debe seleccionar la casilla del ámbito, para indicar que tipo de Actividad está subiendo y de esta forma indicará la cantidad de Horas que tiene la misma.</b>
                 </div>
                 <div class="modal-body">
                     <form id="activityForm" method="POST" enctype="multipart/form-data">

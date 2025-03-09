@@ -231,7 +231,7 @@ function mostrarObservaciones(limiter, offset) {
                      <th>${estudiante.id_estudiante}</th>
                      <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
                      <td>${estudiante.numero_cuenta}</td>
-                     <td>${estudiante.id_respuesta}</td>
+                     <td>${estudiante.nombre_archivo}</td>
                      <td>${estudiante.descripcion}</td>
                  </tr>
              `;
@@ -311,7 +311,7 @@ $(document).on("click", "#ir-buscar", function(){
                      <th>${estudiante.id_estudiante}</th>
                      <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
                      <td>${estudiante.numero_cuenta_estudiante}</td>
-                     <td>${estudiante.id_respuesta}</td>
+                     <td>${estudiante.nombre_archivo}</td>
                      <td>${estudiante.descripcion}</td>
                  </tr>
              `

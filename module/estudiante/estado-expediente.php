@@ -505,7 +505,7 @@
                                             </tr>
                                             </tr>
                                             <tr codigo='15' class='docs-excelencia'>
-                                                <td> <small>Constancia de Conducta y Mención Honorífica por el Coordinador <br>(.pdf)</small> </td>
+                                                <td> <small>Solicitud de Honores Académicos por Estudiante <br>(.pdf)</small> </td>
                                                 <td>
                                                     <span id='sub-doc-15' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
@@ -517,36 +517,6 @@
                                                 </td>
                                                 <td>
                                                     <button class="btn btn-info btn-sm subir" id='btn-subir-15' hidden>Subir</button>
-                                                </td>
-                                            </tr>
-                                            <tr codigo='16' class='docs-excelencia'>
-                                                <td> <small>Solicitud de Honores Académicos por Estudiante <br>(.pdf)</small> </td>
-                                                <td>
-                                                    <span id='sub-doc-16' class="badge badge-secondary">Sin revisar</span>
-                                                </td>
-                                                <td>
-                                                    <textarea class="form-control comentario" id="comentario-16" rows="1" disabled></textarea>
-                                                </td>
-                                                <td class='doc-estudiante'>
-                                                    <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-info btn-sm subir" id='btn-subir-16' hidden>Subir</button>
-                                                </td>
-                                            </tr>
-                                            <tr codigo='17' class='docs-excelencia'>
-                                                <td> <small>Justificación de Mención Honorífica <br>(.pdf)</small> </td>
-                                                <td>
-                                                    <span id='sub-doc-17' class="badge badge-secondary">Sin revisar</span>
-                                                </td>
-                                                <td>
-                                                    <textarea class="form-control comentario" id="comentario-17" rows="1" disabled></textarea>
-                                                </td>
-                                                <td class='doc-estudiante'>
-                                                    <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
-                                                </td>
-                                                <td>
-                                                    <button class="btn btn-info btn-sm subir" id='btn-subir-17' hidden>Subir</button>
                                                 </td>
                                             </tr>
                                             
@@ -685,9 +655,7 @@
          * 12: Solvencia de registro 
          * 13: Timbre de contratación 
          * 14: Fotografía ovalada 
-         * 15: Constancia de Conducta y Mención Honrífica por el Coordinador
          * 16: Solicitud de Honores Académicos por Estudiante
-         * 17: Justificación de Mención Honorífica
          * 
          */
 

@@ -18,7 +18,7 @@
                 "nombres_estudiante" => $row["nombres_usuario"],
                 "apellidos_estudiante" => $row["apellidos_usuario"],
                 "numero_cuenta" => $row["numero_cuenta_estudiante"],
-                "id_respuesta" => $row["id_respuesta_documento"], 
+                "nombre_archivo" => $row["nombre_archivo"], 
                 "descripcion" => $row["descripcion"]
             ];
         }

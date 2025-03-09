@@ -19,6 +19,7 @@
 
         if($codigo == "1"){
             $nombre_archivo.="_Constancia_verificacion_nombre";
+            echo $nombre_archivo;
         }
 
         if($codigo == "2"){
@@ -74,15 +75,7 @@
         }
 
         if($codigo == "15"){
-            $nombre_archivo.="_Constancia_Conducta";
-        }
-
-        if($codigo == "16"){
             $nombre_archivo.="_Solicitud_Honores_Academicos";
-        }
-
-        if($codigo == "17"){
-            $nombre_archivo.="_Justificacion_Mencion_Honorifica";
         }
 
 
@@ -109,7 +102,7 @@
         }else{
             //SE ALMACENARA EN LA BASE DE DATOS SOLO CUANDO SEA LA PRIMERA VEZ QUE SE CREA EL FICHERO
 
-            $sp = "call SP_GUARDARDOCUMENTO('$ruta_final_base','$id_solicitud', '$codigo');";
+            $sp = "call SP_GUARDARDOCUMENTO('$ruta_final_base','$id_solicitud', '$codigo', '$nombre_archivo');";
             $query = mysqli_query($connection, $sp);
 
             if (!$query) {   
