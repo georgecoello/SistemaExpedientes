@@ -565,7 +565,7 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                         </div>
 
 
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col-1"></div>
                             <div class="col-10">
                                 <p class='text-center'><small class='text-muted'>Una vez se hayan revisado todos los documentos se habilitara el botón para la verificación de la solicitud de todos los 
@@ -573,6 +573,7 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                             </div>
                             <div class="col-1"></div>
                         </div>
+                        -->
                     
                 
                 

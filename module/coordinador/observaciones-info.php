@@ -289,7 +289,6 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                                     <th scope="col">ID Estudiante</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Número de Cuenta</th>
-                                    <th scope="col">ID Observación</th>
                                     <th scope="col">Observación Realizada</th>
                                 </tr>
                             </thead>
