@@ -298,7 +298,7 @@
                                                     <span id='sub-doc-1' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-1" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-1' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -314,7 +314,7 @@
                                                     <span id='sub-doc-2' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-2" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-2' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -329,7 +329,7 @@
                                                     <span id='sub-doc-3' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-3" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-3' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -344,7 +344,7 @@
                                                     <span id='sub-doc-4' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-4" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-4' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -359,7 +359,7 @@
                                                     <span id='sub-doc-5' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-5" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-5' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -374,7 +374,7 @@
                                                     <span id='sub-doc-6' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-6" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-6' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -389,7 +389,7 @@
                                                     <span id='sub-doc-7' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-7" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-7' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -404,7 +404,7 @@
                                                     <span id='sub-doc-8' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-8" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-8' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -419,7 +419,7 @@
                                                     <span id='sub-doc-9' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-9" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-9' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -434,7 +434,7 @@
                                                     <span id='sub-doc-10' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-10" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-10' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -449,7 +449,7 @@
                                                     <span id='sub-doc-11' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-11" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-11' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -464,7 +464,7 @@
                                                     <span id='sub-doc-12' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-12" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-12' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -479,7 +479,7 @@
                                                     <span id='sub-doc-13' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-13" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-13' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -493,7 +493,7 @@
                                                     <span id='sub-doc-14' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-14" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-14' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -509,7 +509,7 @@
                                                     <span id='sub-doc-15' class="badge badge-secondary">Sin revisar</span>
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control comentario" id="comentario-15" rows="1" disabled></textarea>
+                                                    <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-15' disabled>Ver Comentarios</button>
                                                 </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
@@ -636,6 +636,80 @@
     </div>
     <!----------------------FIN DE MODAL PARA LOS ESTUDIANTES CON DATOS NO APROBADO---------------------->
 
+    <!----------------------MODAL PARA VER LOS COMENTARIOS DE LOS DOCUMENTOS---------------------->
+    <div class="modal fade" id="comentariosModal" tabindex="-1" aria-labelledby="comentariosModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header bg-primary text-white">
+                    <h5 class="modal-title" id="comentariosModalLabel">Comentarios del Documento</h5>
+                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col" class="text-center">Código del Documento</th>
+                                <th scope="col" class="text-center">Comentarios</th>
+                            </tr>
+                        </thead>
+                        <tbody id="modalComentariosBody">
+                            <!-- Aquí se mostrarán los comentarios en filas de la tabla -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        /* Estilos para la tabla */
+        .table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .table thead th {
+            background-color: #343a40; /* Color oscuro para el encabezado */
+            color: white;
+            font-weight: bold;
+        }
+
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: rgba(0, 0, 0, 0.05); /* Filas alternas con fondo claro */
+        }
+
+        .table-hover tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.075); /* Efecto hover en las filas */
+        }
+
+        .table-bordered {
+            border: 1px solid #dee2e6; /* Borde para la tabla */
+        }
+
+        .table-bordered th,
+        .table-bordered td {
+            border: 1px solid #dee2e6; /* Borde para las celdas */
+        }
+
+
+        .modal-title {
+            font-weight: bold;
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #dee2e6; /* Línea divisoria en el pie de la modal */
+        }
+    </style>
+    <!----------------------FIN DE MODAL PARA VER LOS COMENTARIOS DE LOS DOCUMENTOS---------------------->
 
     <!----------------------PRUEBA NADA MAS---------------------->
     <script src="../../Resources/jquery/jquery.min.js"></script>
@@ -808,88 +882,99 @@
     }
 
 
-    function mostrarNoValidos(){
-
+    function mostrarNoValidos() {
         let student_id = $("#id-estudiante").val();
 
         const getData = {
             id: student_id
-        }
+        };
 
         $.get("../../controller/estudiante/obtener-docs-invalidos.php", getData, function (e) {
             let documentos = JSON.parse(e);
 
-
-            if (documentos == 'Fallo'){
-
+            if (documentos == 'Fallo') {
                 toastr["warning"]("Ups! Ha ocurrido un error");
-
-            } else{
-
-                if (documentos.length !== 0){
-
+            } else {
+                if (documentos.length !== 0) {
                     var template = "Validado";
                     $(".badge").removeClass('badge-secondary');
                     $(".badge").addClass('badge-success');
                     $(".badge").html(template);
 
-                    $(".comentario").val("");
-                    
                     var x = 0;
-                    var docsOcultos=0;
+                    var docsOcultos = 0;
 
+                    // Agrupar comentarios por código de documento
+                    let comentariosPorDocumento = {};
                     documentos.forEach(documento => {
-                        
-                        let elementoBoton = "btn-subir-" + documento.codigo;
-                        let elementoBadge = "#sub-doc-" + documento.codigo;
-                        let elementoDescripcion = "#comentario-" + documento.codigo;
-                        
-                        if (documento.codigo==3 || documento.codigo==5 || documento.codigo==9 || documento.codigo==17) {
+                        if (!comentariosPorDocumento[documento.codigo]) {
+                            comentariosPorDocumento[documento.codigo] = [];
+                        }
+                        comentariosPorDocumento[documento.codigo].push(documento);
+                    });
+
+                    // Recorrer los documentos agrupados
+                    Object.keys(comentariosPorDocumento).forEach(codigo => {
+                        let comentarios = comentariosPorDocumento[codigo];
+                        let elementoBoton = "btn-subir-" + codigo;
+                        let elementoBadge = "#sub-doc-" + codigo;
+                        let elementoVerComentarios = "#ver-comentarios-" + codigo;
+
+                        if (codigo == 3 || codigo == 5 || codigo == 9 || codigo == 17) {
                             docsOcultos++;
-                        } 
+                        }
 
-                        if (documento.estado == "3"){
+                        // Verificar si el documento tiene estado "3" (inválido)
+                        if (comentarios.some(comentario => comentario.estado == "3")) {
                             var template = "Invalido";
-
 
                             $(elementoBadge).removeClass('badge-secondary');
                             $(elementoBadge).addClass('badge-danger');
                             $(elementoBadge).html(template);
 
+                            document.getElementById(elementoBoton).hidden = false;
 
-                            document.getElementById(elementoBoton).hidden=false;
+                            // Habilitar el botón "Ver Comentarios" si hay comentarios
+                            if (comentarios.length > 0) {
+                                $(elementoVerComentarios).removeAttr("disabled");
 
+                                // Asignar el evento click al botón
+                                $(elementoVerComentarios).off("click").on("click", function () {
+                                    // Crear el contenido de la tabla con todos los comentarios
+                                    let comentariosHTML = comentarios.map(comentario => {
+                                        return `
+                                            <tr>
+                                                <td>${codigo}</td>
+                                                <td>${comentario.descripcion}</td>
+                                            </tr>
+                                        `;
+                                    }).join("");
 
-                            $(elementoDescripcion).attr('rows', '4');
-                            $(elementoDescripcion).val(documento.descripcion);
+                                    // Mostrar los comentarios en la tabla de la modal
+                                    $("#modalComentariosBody").html(comentariosHTML);
+                                    $("#comentariosModal").modal("show");
+                                });
+                            } else {
+                                // Deshabilitar el botón si no hay comentarios
+                                $(elementoVerComentarios).attr("disabled", true);
+                            }
 
                             x++;
-
-                        } else if (documento.estado == "2") {
-
-                            console.log("Estoy listo para subir el archivo");
+                        } else if (comentarios.some(comentario => comentario.estado == "2")) {
                             var template = "Subido";
-
-
 
                             $(elementoBadge).removeClass('badge-danger');
                             $(elementoBadge).addClass('badge-info');
                             $(elementoBadge).html(template);
 
-                            console.log(elementoBadge)
-
-                            document.getElementById(elementoBoton).hidden=false;
-
+                            document.getElementById(elementoBoton).hidden = false;
                         }
-
-                        
                     });
-                    
-                    if (x-docsOcultos==0){
-                        toastr["success"]("Todos los documentos han sido subidos, se habilito el boton de envio.");
+
+                    if (x - docsOcultos == 0) {
+                        toastr["success"]("Todos los documentos han sido subidos, se habilitó el botón de envío.");
                         $('#enviar').removeAttr("disabled");
                     }
-                
                 }
             }
         });
