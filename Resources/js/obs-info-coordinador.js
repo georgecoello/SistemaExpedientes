@@ -163,15 +163,14 @@ $(document).on("click", "#cambiar-pass", function(){
    }
 });
 
-/**INICIALIZA TABLA Y PAGINADOR */
-function inicializar(){
+/** Inicializa la tabla y la paginación */
+function inicializar() {
     var offset = 0;
-    
     numeroEstudiantesInfo();
-    mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset); // Llama a la función para mostrar observaciones
+    mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset);
 }
 
- /**FUNCION PARA OBTENER NUMERO DE ESTUDIANTES POR VALIDAR Y MANDAR A CREAR PAGINACION PARA LA VISTA DE LA INFORMACIÓN DEL ESTUDIANTE */
+/** Obtiene el número de estudiantes y crea la paginación */
 function numeroEstudiantesInfo() {
     $.get("../../controller/coordinador/cantidad-obs-info-est.php", function (e) {
         var cantidad_est = parseInt(e.trim(), 10);
@@ -187,106 +186,90 @@ function numeroEstudiantesInfo() {
     });
 }
 
-
-/**FUNCION PARA CREAR LA PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
-function crearPaginacionInfo(estudiantes) {
-    var cantidad_est = parseInt(estudiantes);
+/** Crea la paginación para la tabla */
+function crearPaginacionInfo(cantidad_est) {
     var numero_paginas = Math.ceil(cantidad_est / LIMIT_STUDENTS_TABLE);
 
-    // Validar que numero_paginas sea un número válido y mayor que 0
     if (isNaN(numero_paginas) || numero_paginas <= 0) {
         console.error("Número de páginas no válido:", numero_paginas);
-        return; // Detener la ejecución si no es válido
+        return;
     }
 
-    /**PLUGIN PARA LA CREACION DE PAGINACION RESPONSIVE */
+    $('#paginacionInfo').twbsPagination('destroy'); // Reinicia la paginación si ya existe
     $('#paginacionInfo').twbsPagination({
         totalPages: numero_paginas,
         visiblePages: 5,
         onPageClick: function (event, page) {
+            console.log("Página seleccionada:", page); // Depuración
             var offset = (page - 1) * LIMIT_STUDENTS_TABLE;
-            mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset); // Llama a la función para mostrar observaciones
+            mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset);
         }
     });
 }
 
-/**FUNCION PARA MOSTRAR ESTUDIANTES CON PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
+/** Muestra los estudiantes en la tabla según la página seleccionada */
 function mostrarObservacionesInfo(limiter, offset) {
-
- 
-    $.get("../../controller/coordinador/lista-info.php", function (e) {
+    $.get("../../controller/coordinador/lista-info.php", { limiter, offset }, function (e) {
         let estudiantesInfo = JSON.parse(e);
         let template = "";
- 
-        estudiantesInfo.forEach(estudiantesInfo => {
+
+        estudiantesInfo.forEach(estudiante => {
             template += `
-                 <tr user-id="${estudiantesInfo.id_estudiante}">
-                     <th>${estudiantesInfo.id_estudiante}</th>
-                     <td>${estudiantesInfo.nombres_estudiante} ${estudiantesInfo.apellidos_estudiante}</td>
-                     <td>${estudiantesInfo.numero_cuenta}</td>
-                     <td>${estudiantesInfo.comentario}</td>
-                 </tr>
-             `;
-        });
- 
-        $("#estudiantes-info").html(template);
-    });
- }
- 
-
-/**BUSCADOR */
-$(document).on("click", "#ir-buscar", function(){
-
-   let search = $("#valor-buscar").val();
-   const getData = {
-
-       buscador: search
-
-   }
-
-   if(search == null || search == 0 || /^\s+$/.test(search)){
-       
-       inicializar();
-       $("#paginacionInfo").show();
-
-   } else {
-       
-       $.get("../../controller/coordinador/buscar-observaciones.php", getData, function (e) {
-        co
-           let estudiante = JSON.parse(e);
-           
-           let template="";
-
-           estudiante.forEach(estudiante => {
-            template +=`
-                <tr user-id="${estudiante.id_estudiante}" scope="row">
+                <tr user-id="${estudiante.id_estudiante}">
                     <th>${estudiante.id_estudiante}</th>
                     <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
-                    <td>${estudiante.numero_cuenta_estudiante}</td>
+                    <td>${estudiante.numero_cuenta}</td>
                     <td>${estudiante.comentario}</td>
                 </tr>
-            `
-           });
-           $("#estudiantes-info").html(template);
-           
+            `;
+        });
 
+        $("#estudiantes-info").html(template);
+    }).fail(function () {
+        console.error("Error al cargar los datos de la página.");
+    });
+}
 
-       })
+/** Buscador */
+$(document).on("click", "#ir-buscar", function () {
+    let search = $("#valor-buscar").val();
+    const getData = { buscador: search };
 
-       $("#paginacionInfo").hide();
+    if (search == null || search == 0 || /^\s+$/.test(search)) {
+        inicializar();
+        $("#paginacionInfo").show();
+    } else {
+        $.get("../../controller/coordinador/buscar-observaciones.php", getData, function (e) {
+            let estudiante = JSON.parse(e);
+            let template = "";
 
-   }
-   
+            estudiante.forEach(estudiante => {
+                template += `
+                    <tr user-id="${estudiante.id_estudiante}" scope="row">
+                        <th>${estudiante.id_estudiante}</th>
+                        <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
+                        <td>${estudiante.numero_cuenta_estudiante}</td>
+                        <td>${estudiante.comentario}</td>
+                    </tr>
+                `;
+            });
+
+            $("#estudiantes-info").html(template);
+        }).fail(function () {
+            console.error("Error al buscar observaciones.");
+        });
+
+        $("#paginacionInfo").hide();
+    }
 });
 
-
-
-/**DEJAR DE BUSCAR Y MOSTRAR TABLA NORMAL */
-$(document).on("click", "#dejar-buscar", function(){
-
-   inicializar();
-   $("#paginacionInfo").show();
-   
+/** Dejar de buscar y mostrar la tabla normal */
+$(document).on("click", "#dejar-buscar", function () {
+    inicializar();
+    $("#paginacionInfo").show();
 });
 
-
+/** Inicializa la tabla y la paginación al cargar la página */
+$(document).ready(function () {
+    inicializar();
+});

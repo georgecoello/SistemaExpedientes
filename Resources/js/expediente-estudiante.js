@@ -316,6 +316,9 @@ $("#enviar-rectificar").click(function () {
                  /**SE ENVIA EL CORREO AL ESTUDIANTE */
                 let correo = CORREO_ESTUDIANTE;
 
+                // Ocultar el botón
+                $(this).hide();
+
                 $.post("../../controller/coordinador/enviar-correo-expediente.php", {correo}, function(response){
                     toastr["warning"](response);
                 });
@@ -329,9 +332,12 @@ $("#enviar-rectificar").click(function () {
 
 /**ABRE EL MODAL PARA CREAR CITA */
 $("#enviar").click(function () { 
-    
+
     $("#aprobar-cita").modal({backdrop: 'static', keyboard: false});
-    
+
+    // Ocultar el botón
+    $(this).hide();
+        
 });
 
 

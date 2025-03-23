@@ -191,6 +191,7 @@ function mostrarComentario(id) {
     $.get("../../controller/estudiante/obtener-comentario.php", {id}, function (e) {
         let comentario = JSON.parse(e);
         template = comentario.comentario;
+        console.log(comentario);
         
         if(comentario == "Fallo"){
 

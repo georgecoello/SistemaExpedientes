@@ -169,7 +169,6 @@ function inicializar(){
     
     numeroEstudiantes();                                    //Se manda a obtener el numero de estudiantes que aun no se valida
     mostrarObservaciones(LIMIT_STUDENTS_TABLE, offset);       //Manda a mostrar los estudinates
-    numeroEstudiantesInfo();
 }
 
 /**FUNCION PARA OBTENER NUMERO DE ESTUDIANTES POR VALIDAR Y MANDAR A CREAR PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
@@ -241,46 +240,7 @@ function mostrarObservaciones(limiter, offset) {
     });
  }
 
- /**FUNCION PARA OBTENER NUMERO DE ESTUDIANTES POR VALIDAR Y MANDAR A CREAR PAGINACION PARA LA VISTA DE LA INFORMACIÓN DEL ESTUDIANTE */
-function numeroEstudiantesInfo() {
-    $.get("../../controller/coordinador/cantidad-obs-info-est.php", function (e) {
-        console.log("Respuesta del servidor:", e); // <-- Agregar esto
-        var cantidad_est = parseInt(e.trim(), 10);
 
-        if (isNaN(cantidad_est) || cantidad_est <= 0) {
-            console.warn("Número de observaciones no válido:", e);
-            return;
-        }
-
-        crearPaginacionInfo(cantidad_est);
-    }).fail(function () {
-        console.error("Error al obtener la cantidad de observaciones.");
-    });
-}
-
-
-/**FUNCION PARA CREAR LA PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
-function crearPaginacionInfo(estudiantes) {
-    var cantidad_est = parseInt(estudiantes);
-    var numero_paginas = Math.ceil(cantidad_est / LIMIT_STUDENTS_TABLE);
-
-    // Validar que numero_paginas sea un número válido y mayor que 0
-    if (isNaN(numero_paginas) || numero_paginas <= 0) {
-        console.error("Número de páginas no válido:", numero_paginas);
-        return; // Detener la ejecución si no es válido
-    }
-
-    /**PLUGIN PARA LA CREACION DE PAGINACION RESPONSIVE */
-    $('#paginacion').twbsPagination({
-        totalPages: numero_paginas,
-        visiblePages: 5,
-        onPageClick: function (event, page) {
-            var offset = (page - 1) * LIMIT_STUDENTS_TABLE;
-            
-        }
-    });
-}
- 
 
 /**BUSCADOR */
 $(document).on("click", "#ir-buscar", function(){

@@ -351,14 +351,19 @@ $("#enviar-rectificar").click(function () {
             
     });
 
+    // Ocultar el botón
+    $(this).hide();
     
 });
 
 
 /**ABRE EL MODAL PARA CREAR CITA */
 $("#enviar").click(function () { 
-    
+
     $("#aprobar-cita").modal({backdrop: 'static', keyboard: false});
+
+    // Ocultar el botón
+    $(this).hide();
     
 });
 

@@ -15,7 +15,7 @@
  * 12: Solvencia de registro 
  * 13: Timbre de contratación 
  * 14: Fotografía ovalada 
- * 15: Solicitud de Honores Académicos por Estudiante
+ * 15: Solicitud de Honores Académicos y Justificación por Estudiante
  * 
  */
 
@@ -81,20 +81,6 @@ async function obtenerDatosEstudiante(){
         if (estudiante.excelencia == "2"){
             $('.docs-excelencia').remove();
         }
-
-
-        const docs_otros = await $.get("../../controller/estudiante/obtener-otros-docs.php", {carrera: estudiante.carrera});
-        let docs = JSON.parse(docs_otros);
-
-        let template = "";
-
-        docs.forEach(doc => {
-            template += `
-            <li>${doc.nombre}</li>
-            `
-        });
-        $("#lista-otros").html(template);
-
 
         return estudiante.id;
     }
@@ -252,7 +238,7 @@ function validarTodos(id_estudiante) {
 
             if (link.estado == "5"){
 
-                let filasTabla = $("#example tr").length-1;
+                let filasTabla = $("#example tr").length-2;
                 var x = 0;
             
                 for (var i = 1; i < filasTabla + 1 ; i++){

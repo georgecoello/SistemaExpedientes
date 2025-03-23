@@ -83,10 +83,6 @@
 
         $ruta_final = $BASEPATHEXPEDIENTES.''.$ruta .''. $nombre_archivo;           //OBTENEMOS LA RUTA FINAL CON EL DIRECTORIO Y DOCUMENTO
 
-        $ruta_final_base = $ruta .''. $nombre_archivo;                              //RUTA QUE GUARDAREMOS EN BASE DE DATOS SIN EL BASEPATHEXPEDIENTE
-
-
-
         /**VALIDAMOS QUE EL DOCUMENTO NO TENGA NINGUN ERROR */
         if ( 0 < $_FILES['file']['error'] ) {
             echo 'Error';
@@ -98,22 +94,24 @@
 
             unlink($ruta_final);
 
-        }else{
-            //SE ALMACENARA EN LA BASE DE DATOS SOLO CUANDO SEA LA PRIMERA VEZ QUE SE CREA EL FICHERO
-
-            $sp = "call SP_GUARDARDOCUMENTO('$ruta_final_base','$id_solicitud', '$codigo', '$nombre_archivo');";
-            $query = mysqli_query($connection, $sp);
-
-            if (!$query) {   
-                echo 'Error';
-                die;
-            }
-
         }
+            
+        //SE ALMACENARA EN LA BASE DE DATOS SOLO CUANDO SEA LA PRIMERA VEZ QUE SE CREA EL FICHERO
+
+        $sp = "call SP_CAMBAIRESTADODOCINVALIDO('$id_solicitud', '$codigo');";
+        $query = mysqli_query($connection, $sp);
+
+        if (!$query) {   
+            echo 'Error';
+            die;
+        }
+
+        
 
         //SUBIMOS EL DOCUMENTO A NUESTRO SERVER 
         $resultado = move_uploaded_file($documento["tmp_name"], $ruta_final);
         @chmod($ruta_final, 0777);
+        
         if ($resultado){
             echo 'Exito';
         } else {

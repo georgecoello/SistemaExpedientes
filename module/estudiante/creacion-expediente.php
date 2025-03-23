@@ -324,10 +324,10 @@
                                             </tr>
                                             <tr>
                                                 <td class="doc-estudiante" colspan="4">
-                                                <small><b>En caso de tener más de una constancia de Horas Artículo 140 (VOAE), seleccione el botón para ingresarlas, y luego suba el documento generado.</b></small><br>
+                                                <small><b>En caso de tener más de una constancia de Horas Artículo 140 (VOAE), seleccione el botón (Subir Constancias) para ingresar todas las constancias que usted tenga, y luego suba el documento generado con todas las constancias que usted ingresó.</b></small><br>
                                                 <br>
                                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#activityModal" style="color: white;">
-                                                        <small><b>Subir archivos Horas Artículo 140</b></small>
+                                                        <small><b>Subir Constancias</b></small>
                                                     </button>
                                                 </td>
                                             </tr>
@@ -465,7 +465,7 @@
                                             </tr>
 
                                             <tr codigo='15' class='docs-excelencia'>
-                                                <td> <small>Solicitud de Honores Académicos por Estudiante <br>(.pdf)</small> </td>
+                                                <td> <small>Solicitud de Honores Académicos y Justificación por Estudiante <br>(.pdf)</small> </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">
                                                 </td>
@@ -473,7 +473,7 @@
                                                     <button class="btn btn-info btn-sm subir"><b>Subir</b></button>
                                                 </td>
                                                 <td>
-                                                    <span id='sub-doc-16' class="badge badge-danger"><b>Sin subir</b></span>
+                                                    <span id='sub-doc-15' class="badge badge-danger"><b>Sin subir</b></span>
                                                 </td>
                                             </tr>
                                             
@@ -489,7 +489,7 @@
                     <div class="row pb-3">
                         <div class="col-4"></div>
                         <div class="col-4">
-                            <button type="button" style='border-radius: 5px;' class="btn btn-sm btn-success float-right add-user mt-3 mb-2 sombra-corta3 btn-block" id='enviar' >Enviar Todo</button>          
+                            <button type="button" style='border-radius: 5px;' class="btn btn-sm btn-success float-right add-user mt-3 mb-2 sombra-corta3 btn-block" id='enviar' disabled>Enviar Todo</button>          
                         </div>
                         <div class="col-4"></div>
                     
@@ -510,190 +510,192 @@
     <!-----------------------------FINAL CONTENIDO DE LA PAGINA-------------------->
 
     <!-- Modal para mostrar el resumen y permitir la descarga -->
-    <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="activityModalLabel">Registro de Actividades de Artículo 140 (VOAE)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div style="padding-left: 3vw; padding-right: 3vw;">
-                    <br><b style="color: red;">NOTA: Debe seleccionar la casilla del ámbito, para indicar que tipo de Actividad está subiendo y de esta forma indicará la cantidad de Horas que tiene la misma.</b>
-                </div>
-                <div class="modal-body">
-                    <form id="activityForm" method="POST" enctype="multipart/form-data">
-                        <!-- Contenedor de archivos -->
-                        <div id="fileContainer"></div>
+        <div class="modal fade" id="activityModal" tabindex="-1" aria-labelledby="activityModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="activityModalLabel" style="color: blue; font-weight: bold;">Registro de Actividades de Artículo 140 (VOAE)</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div style="padding-left: 3vw; padding-right: 3vw;">
+                        <br><b style="color: red;">NOTA: Debe seleccionar la casilla del ámbito, para indicar que tipo de Actividad está subiendo y de esta forma indicará la cantidad de Horas que tiene la misma.</b>
+                    </div>
+                    <div class="modal-body">
+                        <form id="activityForm" method="POST" enctype="multipart/form-data">
+                            <!-- Contenedor de archivos -->
+                            <div id="fileContainer"></div>
 
-                        <div class="mb-3">
-                            <button type="button" class="btn btn-primary" id="addFileButton">Agregar Más Archivos PDF</button>
-                        </div>
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-primary" id="addFileButton">Agregar Más Archivos PDF</button>
+                            </div>
 
-                        <!-- Resumen -->
-                        <div id="summary" class="mt-3">
-                            <h6>Resumen</h6>
-                            <input type="number" class="form-control" id="total" placeholder="Total" readonly>
-                        </div>
+                            <!-- Resumen -->
+                            <div id="summary" class="mt-3">
+                                <h6>Resumen</h6>
+                                <input type="number" class="form-control" id="total" placeholder="Total" readonly>
+                            </div>
 
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                            <button type="button" id="downloadPdfButton" class="btn btn-success">Descargar PDF Combinado</button>
-                        </div>
-                    </form>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" id="downloadPdfButton" class="btn btn-warning">Descargar PDF Combinado</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
-    <script>
-        let fileIndex = 0;
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
+        <script>
+            let fileIndex = 0;
 
-        // Función para agregar un nuevo formulario de archivo PDF
-        function addFileForm() {
-            const fileContainer = document.getElementById('fileContainer');
-            
-            const fileForm = document.createElement('div');
-            fileForm.classList.add('mb-3');
-            fileForm.setAttribute('id', `fileForm-${fileIndex}`);
-            
-            // Contenedor para nombre de la actividad y archivo PDF
-            const activityNameAndFileContainer = `
-                <div class="d-flex align-items-center">
-                    <!-- Input para el nombre de la actividad -->
-                    <div class="flex-grow-1">
-                        <label for="activityName-${fileIndex}" class="form-label">Nombre de Actividad</label>
-                        <input type="text" id="activityName-${fileIndex}" name="activityName" class="form-control" placeholder="Nombre de actividad" required>
-                    </div>
-                    
-                    <!-- Input para el archivo PDF -->
-                    <div class="ms-3">
-                        <label for="activityPdf-${fileIndex}" class="form-label">Subir PDF</label>
-                        <input type="file" id="activityPdf-${fileIndex}" name="activityPdf[]" class="form-control" accept=".pdf">
-                    </div>
-                </div>
-            `;
-
-            // Checkboxes y horas
-            const hoursInput = `
-                <div class="mb-3">
-                    <label class="form-label">Tipos de Horas</label>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" id="academicasCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Académicas
-                        </label>
-                        <input type="number" class="form-control form-control-sm ms-2 valor" id="academicasInput-${fileIndex}" placeholder="Académicas" min="0" oninput="sumarValores(${fileIndex})">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" id="socialesCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Sociales
-                        </label>
-                        <input type="number" class="form-control form-control-sm ms-2 valor" id="socialesInput-${fileIndex}" placeholder="Sociales" min="0" oninput="sumarValores(${fileIndex})">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" id="culturalesCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Culturales
-                        </label>
-                        <input type="number" class="form-control form-control-sm ms-2 valor" id="culturalesInput-${fileIndex}" placeholder="Culturales" min="0" oninput="sumarValores(${fileIndex})">
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input" id="deportivasCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Deportivas
-                        </label>
-                        <input type="number" class="form-control form-control-sm ms-2 valor" id="deportivasInput-${fileIndex}" placeholder="Deportivas" min="0" oninput="sumarValores(${fileIndex})">
-                    </div>
-                </div>
-            `;
-
-            // Incluir todo el formulario
-            fileForm.innerHTML = activityNameAndFileContainer + hoursInput;
-            fileContainer.appendChild(fileForm);
-            
-            fileIndex++;
-        }
-
-        // Función para sumar los valores de horas
-        function sumarValores(index) {
-            const academicas = document.getElementById(`academicasInput-${index}`).value || 0;
-            const sociales = document.getElementById(`socialesInput-${index}`).value || 0;
-            const culturales = document.getElementById(`culturalesInput-${index}`).value || 0;
-            const deportivas = document.getElementById(`deportivasInput-${index}`).value || 0;
-
-            const total = 
-                (document.getElementById(`academicasCheckbox-${index}`).checked ? parseInt(academicas) : 0) +
-                (document.getElementById(`socialesCheckbox-${index}`).checked ? parseInt(sociales) : 0) +
-                (document.getElementById(`culturalesCheckbox-${index}`).checked ? parseInt(culturales) : 0) +
-                (document.getElementById(`deportivasCheckbox-${index}`).checked ? parseInt(deportivas) : 0);
-
-            document.getElementById('total').value = total;
-        }
-
-        // Función para combinar los PDFs y generar el PDF final
-        document.getElementById('downloadPdfButton').addEventListener('click', async () => {
-            const { PDFDocument, rgb } = PDFLib;
-            const pdfDoc = await PDFDocument.create();
-            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
-
-            let totalHoras = 0; // Variable para acumular el total de horas
-
-            // Obtener todos los formularios de archivo y agregar al PDF
-            const fileForms = document.querySelectorAll('[id^="fileForm-"]');
-            for (const form of fileForms) {
-                const index = form.id.split('-')[1]; // Obtener el índice del archivo
-
-                // Nombre de la actividad
-                const activityName = document.getElementById(`activityName-${index}`).value || 'Actividad sin nombre';
+            // Función para agregar un nuevo formulario de archivo PDF
+            function addFileForm() {
+                const fileContainer = document.getElementById('fileContainer');
                 
-                // Agregar nombre de la actividad al PDF
-                const page = pdfDoc.addPage([600, 400]);
-                page.drawText(`Actividad: ${activityName}`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
+                const fileForm = document.createElement('div');
+                fileForm.classList.add('mb-3');
+                fileForm.setAttribute('id', `fileForm-${fileIndex}`);
+                
+                // Contenedor para nombre de la actividad y archivo PDF
+                const activityNameAndFileContainer = `
+                    <div class="d-flex align-items-center">
+                        <!-- Input para el nombre de la actividad -->
+                        <div class="flex-grow-1">
+                            <label for="activityName-${fileIndex}" class="form-label">Nombre de Actividad</label>
+                            <input type="text" id="activityName-${fileIndex}" name="activityName" class="form-control" placeholder="Nombre de actividad" required>
+                        </div>
+                        
+                        <!-- Input para el archivo PDF -->
+                        <div class="ms-3">
+                            <label for="activityPdf-${fileIndex}" class="form-label">Subir PDF</label>
+                            <input type="file" id="activityPdf-${fileIndex}" name="activityPdf[]" class="form-control" accept=".pdf">
+                        </div>
+                    </div>
+                `;
 
-                // Resumen de horas
-                page.drawText(`Resumen de Horas`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+                // Checkboxes y horas
+                const hoursInput = `
+                    <div class="mb-3">
+                    <br>
+                        <label class="form-label" style="font-weight: bold; font-size: 150"><u>Ámbitos</u></label>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="academicasCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Científico - Académicas
+                            </label>
+                            <input type="number" class="form-control form-control-sm ms-2 valor" id="academicasInput-${fileIndex}" placeholder=" Científico - Académicas" min="0" oninput="sumarValores(${fileIndex})">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="socialesCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Sociales
+                            </label>
+                            <input type="number" class="form-control form-control-sm ms-2 valor" id="socialesInput-${fileIndex}" placeholder=" Sociales" min="0" oninput="sumarValores(${fileIndex})">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="culturalesCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Culturales
+                            </label>
+                            <input type="number" class="form-control form-control-sm ms-2 valor" id="culturalesInput-${fileIndex}" placeholder=" Culturales" min="0" oninput="sumarValores(${fileIndex})">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input" id="deportivasCheckbox-${fileIndex}" onchange="sumarValores(${fileIndex})"> Deportivas
+                            </label>
+                            <input type="number" class="form-control form-control-sm ms-2 valor" id="deportivasInput-${fileIndex}" placeholder=" Deportivas" min="0" oninput="sumarValores(${fileIndex})">
+                        </div>
+                    </div>
+                `;
+
+                // Incluir todo el formulario
+                fileForm.innerHTML = activityNameAndFileContainer + hoursInput;
+                fileContainer.appendChild(fileForm);
+                
+                fileIndex++;
+            }
+
+            // Función para sumar los valores de horas
+            function sumarValores(index) {
                 const academicas = document.getElementById(`academicasInput-${index}`).value || 0;
                 const sociales = document.getElementById(`socialesInput-${index}`).value || 0;
                 const culturales = document.getElementById(`culturalesInput-${index}`).value || 0;
                 const deportivas = document.getElementById(`deportivasInput-${index}`).value || 0;
 
-                page.drawText(`Académicas: ${academicas} horas`, { x: 50, y: 310, size: 12 });
-                page.drawText(`Sociales: ${sociales} horas`, { x: 50, y: 290, size: 12 });
-                page.drawText(`Culturales: ${culturales} horas`, { x: 50, y: 270, size: 12 });
-                page.drawText(`Deportivas: ${deportivas} horas`, { x: 50, y: 250, size: 12 });
+                const total = 
+                    (document.getElementById(`academicasCheckbox-${index}`).checked ? parseInt(academicas) : 0) +
+                    (document.getElementById(`socialesCheckbox-${index}`).checked ? parseInt(sociales) : 0) +
+                    (document.getElementById(`culturalesCheckbox-${index}`).checked ? parseInt(culturales) : 0) +
+                    (document.getElementById(`deportivasCheckbox-${index}`).checked ? parseInt(deportivas) : 0);
 
-                // Actualizar el total de horas
-                totalHoras += parseInt(academicas) + parseInt(sociales) + parseInt(culturales) + parseInt(deportivas);
-
-                // Agregar archivo PDF si es que existe
-                const fileInput = document.getElementById(`activityPdf-${index}`);
-                if (fileInput.files.length > 0) {
-                    const uploadedPdfBytes = await fileInput.files[0].arrayBuffer();
-                    const uploadedPdfDoc = await PDFDocument.load(uploadedPdfBytes);
-                    const copiedPages = await pdfDoc.copyPages(uploadedPdfDoc, uploadedPdfDoc.getPageIndices());
-                    copiedPages.forEach(page => pdfDoc.addPage(page));
-                }
+                document.getElementById('total').value = total;
             }
 
-            // Crear una página final con el resumen total de horas
-            const page = pdfDoc.addPage([600, 400]);
-            page.drawText(`Resumen Final de Horas`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
-            page.drawText(`Total de Horas: ${totalHoras}`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+            // Función para combinar los PDFs y generar el PDF final
+            document.getElementById('downloadPdfButton').addEventListener('click', async () => {
+                const { PDFDocument, rgb } = PDFLib;
+                const pdfDoc = await PDFDocument.create();
+                const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
 
-            // Descargar el PDF combinado
-            const pdfBytes = await pdfDoc.save();
-            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(blob);
-            link.download = 'Resumen_Actividades_140.pdf';
-            link.click();
-        });
+                let totalHoras = 0; // Variable para acumular el total de horas
 
-        // Inicializar el formulario con el primer archivo
-        addFileForm();
+                // Obtener todos los formularios de archivo y agregar al PDF
+                const fileForms = document.querySelectorAll('[id^="fileForm-"]');
+                for (const form of fileForms) {
+                    const index = form.id.split('-')[1]; // Obtener el índice del archivo
 
-        // Evento para agregar más archivos
-        document.getElementById('addFileButton').addEventListener('click', addFileForm);
-    </script>
+                    // Nombre de la actividad
+                    const activityName = document.getElementById(`activityName-${index}`).value || 'Actividad sin nombre';
+                    
+                    // Agregar nombre de la actividad al PDF
+                    const page = pdfDoc.addPage([600, 400]);
+                    page.drawText(`Actividad: ${activityName}`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
+
+                    // Resumen de horas
+                    page.drawText(`Resumen de Horas`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+                    const academicas = document.getElementById(`academicasInput-${index}`).value || 0;
+                    const sociales = document.getElementById(`socialesInput-${index}`).value || 0;
+                    const culturales = document.getElementById(`culturalesInput-${index}`).value || 0;
+                    const deportivas = document.getElementById(`deportivasInput-${index}`).value || 0;
+
+                    page.drawText(`Académicas: ${academicas} horas`, { x: 50, y: 310, size: 12 });
+                    page.drawText(`Sociales: ${sociales} horas`, { x: 50, y: 290, size: 12 });
+                    page.drawText(`Culturales: ${culturales} horas`, { x: 50, y: 270, size: 12 });
+                    page.drawText(`Deportivas: ${deportivas} horas`, { x: 50, y: 250, size: 12 });
+
+                    // Actualizar el total de horas
+                    totalHoras += parseInt(academicas) + parseInt(sociales) + parseInt(culturales) + parseInt(deportivas);
+
+                    // Agregar archivo PDF si es que existe
+                    const fileInput = document.getElementById(`activityPdf-${index}`);
+                    if (fileInput.files.length > 0) {
+                        const uploadedPdfBytes = await fileInput.files[0].arrayBuffer();
+                        const uploadedPdfDoc = await PDFDocument.load(uploadedPdfBytes);
+                        const copiedPages = await pdfDoc.copyPages(uploadedPdfDoc, uploadedPdfDoc.getPageIndices());
+                        copiedPages.forEach(page => pdfDoc.addPage(page));
+                    }
+                }
+
+                // Crear una página final con el resumen total de horas
+                const page = pdfDoc.addPage([600, 400]);
+                page.drawText(`Resumen Final de Horas`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
+                page.drawText(`Total de Horas: ${totalHoras}`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+
+                // Descargar el PDF combinado
+                const pdfBytes = await pdfDoc.save();
+                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'Resumen_Actividades_140.pdf';
+                link.click();
+            });
+
+            // Inicializar el formulario con el primer archivo
+            addFileForm();
+
+            // Evento para agregar más archivos
+            document.getElementById('addFileButton').addEventListener('click', addFileForm);
+        </script>
+
     
     <script src="../../Resources/jquery/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

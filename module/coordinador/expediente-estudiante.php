@@ -501,7 +501,7 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                                             </td>
                                         </tr>
                                         <tr codigo='15' class='docs-excelencia' >
-                                            <td> <small class="nombre-doc">Solicitud de Honores Académicos por Estudiante <br>(.pdf)</small> </td>
+                                            <td> <small class="nombre-doc">Solicitud de Honores Académicos y Justificación por Estudiante <br>(.pdf)</small> </td>
                                             <td>
                                                 <a href="#" class="btn btn-info btn-sm" role="button" id='btn-descarga-15' download="">Descargar</a>
                                                 <a href="#" class="btn btn-secondary btn-sm" role="button" id='btn-ver-15' target="_blank">Ver</a>
@@ -535,7 +535,6 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                             <div class="col-4"></div>
                         </div>
 
-                        <!--
                         <div class="row">
                             <div class="col-1"></div>
                             <div class="col-10">
@@ -544,7 +543,7 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                             </div>
                             <div class="col-1"></div>
                         </div>
-                        -->
+
                 
                 
                 

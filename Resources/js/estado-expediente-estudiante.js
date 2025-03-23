@@ -15,7 +15,7 @@
  * 12: Solvencia de registro 
  * 13: Timbre de contratación 
  * 14: Fotografía ovalada 
- * 15: Solicitud de Honores Académicos por Estudiante
+ * 15: Solicitud de Honores Académicos y Justificación por Estudiante
  * 
  */
 
@@ -82,18 +82,6 @@ async function obtenerDatosEstudiante(){
         if (estudiante.excelencia == "2"){
             $('.docs-excelencia').remove();
         }
-
-        const docs_otros = await $.get("../../controller/estudiante/obtener-otros-docs.php", {carrera: estudiante.carrera});
-        let docs = JSON.parse(docs_otros);
-
-        let template = "";
-
-        docs.forEach(doc => {
-            template += `
-            <li>${doc.nombre}</li>
-            `
-        });
-        $("#lista-otros").html(template);
 
         return estudiante.id;
     }
@@ -216,31 +204,41 @@ function mostrarNoValidos(){
                     } 
 
                     if (documento.estado == "3"){
-
+                        console.log("Estoy acá y mi estado es 3");
                         var template = "Invalido";
+
+                        console.log("Estou acá y muestro invalido");
 
                         $(elementoBadge).removeClass('badge-secondary');
                         $(elementoBadge).addClass('badge-danger');
                         $(elementoBadge).html(template);
 
-                        
+                        console.log(elementoBadge);
+
                         document.getElementById(elementoBoton).hidden=false;
 
 
                         $(elementoDescripcion).attr('rows', '4');
                         $(elementoDescripcion).val(documento.descripcion);
 
+                        console.log("Estoy acá y muestro la descripción")
+
                         x++;
 
-                        const now = new Date();
-                        console.log(now.toLocaleString('es-ES', { timeZone: 'America/Tegucigalpa' }));
+                        console.log("Estoy acá y dejé de mostrar los invalidos")
                     } else if (documento.estado == "2") {
 
+                        console.log("Quiero subir el archivo");
+
                         var template = "Subido";
+
+                        console.log("Estoy listo para subir el archivo");
 
                         $(elementoBadge).removeClass('badge-danger');
                         $(elementoBadge).addClass('badge-info');
                         $(elementoBadge).html(template);
+
+                        console.log(elementoBadge)
 
                         document.getElementById(elementoBoton).hidden=false;
 
