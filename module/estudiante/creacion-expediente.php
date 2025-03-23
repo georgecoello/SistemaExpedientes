@@ -518,7 +518,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div style="padding-left: 3vw; padding-right: 3vw;">
-                        <br><b style="color: red;">NOTA: Debe seleccionar la casilla del ámbito, para indicar que tipo de Actividad está subiendo y de esta forma indicará la cantidad de Horas que tiene la misma.</b>
+                        <br><b style="color: red;">NOTA: Primero debe seleccionar la casilla del ámbito, para indicar que tipo de Actividad está subiendo y de esta forma indicará la cantidad de Horas que tiene la misma.</b>
                     </div>
                     <div class="modal-body">
                         <form id="activityForm" method="POST" enctype="multipart/form-data">
@@ -632,62 +632,84 @@
 
             // Función para combinar los PDFs y generar el PDF final
             document.getElementById('downloadPdfButton').addEventListener('click', async () => {
-                const { PDFDocument, rgb } = PDFLib;
-                const pdfDoc = await PDFDocument.create();
-                const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+            const { PDFDocument, rgb } = PDFLib;
+            const pdfDoc = await PDFDocument.create();
+            const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
 
-                let totalHoras = 0; // Variable para acumular el total de horas
+            let totalHoras = 0; // Variable para acumular el total de horas
+            let hasUploadedFiles = false; // Variable para verificar si se ha subido al menos un archivo
 
-                // Obtener todos los formularios de archivo y agregar al PDF
-                const fileForms = document.querySelectorAll('[id^="fileForm-"]');
-                for (const form of fileForms) {
-                    const index = form.id.split('-')[1]; // Obtener el índice del archivo
+            // Obtener todos los formularios de archivo
+            const fileForms = document.querySelectorAll('[id^="fileForm-"]');
+            for (const form of fileForms) {
+                const index = form.id.split('-')[1]; // Obtener el índice del archivo
 
-                    // Nombre de la actividad
-                    const activityName = document.getElementById(`activityName-${index}`).value || 'Actividad sin nombre';
-                    
-                    // Agregar nombre de la actividad al PDF
-                    const page = pdfDoc.addPage([600, 400]);
-                    page.drawText(`Actividad: ${activityName}`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
-
-                    // Resumen de horas
-                    page.drawText(`Resumen de Horas`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
-                    const academicas = document.getElementById(`academicasInput-${index}`).value || 0;
-                    const sociales = document.getElementById(`socialesInput-${index}`).value || 0;
-                    const culturales = document.getElementById(`culturalesInput-${index}`).value || 0;
-                    const deportivas = document.getElementById(`deportivasInput-${index}`).value || 0;
-
-                    page.drawText(`Académicas: ${academicas} horas`, { x: 50, y: 310, size: 12 });
-                    page.drawText(`Sociales: ${sociales} horas`, { x: 50, y: 290, size: 12 });
-                    page.drawText(`Culturales: ${culturales} horas`, { x: 50, y: 270, size: 12 });
-                    page.drawText(`Deportivas: ${deportivas} horas`, { x: 50, y: 250, size: 12 });
-
-                    // Actualizar el total de horas
-                    totalHoras += parseInt(academicas) + parseInt(sociales) + parseInt(culturales) + parseInt(deportivas);
-
-                    // Agregar archivo PDF si es que existe
-                    const fileInput = document.getElementById(`activityPdf-${index}`);
-                    if (fileInput.files.length > 0) {
-                        const uploadedPdfBytes = await fileInput.files[0].arrayBuffer();
-                        const uploadedPdfDoc = await PDFDocument.load(uploadedPdfBytes);
-                        const copiedPages = await pdfDoc.copyPages(uploadedPdfDoc, uploadedPdfDoc.getPageIndices());
-                        copiedPages.forEach(page => pdfDoc.addPage(page));
-                    }
+                // Verificar si se ha subido un archivo PDF en este formulario
+                const fileInput = document.getElementById(`activityPdf-${index}`);
+                if (fileInput.files.length === 0) {
+                    continue; // Saltar este formulario si no hay archivo subido
                 }
 
-                // Crear una página final con el resumen total de horas
-                const page = pdfDoc.addPage([600, 400]);
-                page.drawText(`Resumen Final de Horas`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
-                page.drawText(`Total de Horas: ${totalHoras}`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+                hasUploadedFiles = true; // Marcar que se ha subido al menos un archivo
 
-                // Descargar el PDF combinado
-                const pdfBytes = await pdfDoc.save();
-                const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'Resumen_Actividades_140.pdf';
-                link.click();
-            });
+                // Nombre de la actividad
+                const activityName = document.getElementById(`activityName-${index}`).value || 'Actividad sin nombre';
+                
+                // Agregar nombre de la actividad al PDF
+                const page = pdfDoc.addPage([600, 400]);
+                page.drawText(`Actividad: ${activityName}`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
+
+                // Resumen de horas
+                page.drawText(`Resumen de Horas`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+                const academicas = document.getElementById(`academicasInput-${index}`).value || 0;
+                const sociales = document.getElementById(`socialesInput-${index}`).value || 0;
+                const culturales = document.getElementById(`culturalesInput-${index}`).value || 0;
+                const deportivas = document.getElementById(`deportivasInput-${index}`).value || 0;
+
+                page.drawText(`Académicas: ${academicas} horas`, { x: 50, y: 310, size: 12 });
+                page.drawText(`Sociales: ${sociales} horas`, { x: 50, y: 290, size: 12 });
+                page.drawText(`Culturales: ${culturales} horas`, { x: 50, y: 270, size: 12 });
+                page.drawText(`Deportivas: ${deportivas} horas`, { x: 50, y: 250, size: 12 });
+
+                // Actualizar el total de horas
+                totalHoras += parseInt(academicas) + parseInt(sociales) + parseInt(culturales) + parseInt(deportivas);
+
+                // Agregar archivo PDF subido
+                const uploadedPdfBytes = await fileInput.files[0].arrayBuffer();
+                const uploadedPdfDoc = await PDFDocument.load(uploadedPdfBytes);
+                const copiedPages = await pdfDoc.copyPages(uploadedPdfDoc, uploadedPdfDoc.getPageIndices());
+                copiedPages.forEach(page => pdfDoc.addPage(page));
+            }
+
+            // Verificar si se ha subido al menos un archivo
+            if (!hasUploadedFiles) {
+                // Mostrar el mensaje personalizado
+                const customAlert = document.getElementById('customAlert');
+                const customAlertMessage = document.getElementById('customAlertMessage');
+                customAlertMessage.textContent = 'No has subido ningún archivo PDF. Por favor, sube al menos un archivo antes de descargar.';
+                customAlert.style.display = 'flex'; // Mostrar el mensaje
+
+                // Cerrar el mensaje al hacer clic en el botón
+                document.getElementById('customAlertCloseButton').onclick = () => {
+                    customAlert.style.display = 'none';
+                };
+                return; // Detener la ejecución si no hay archivos subidos
+            }
+
+            // Crear una página final con el resumen total de horas
+            const page = pdfDoc.addPage([600, 400]);
+            page.drawText(`Resumen Final de Horas`, { x: 50, y: 370, size: 18, font, color: rgb(0, 0, 0) });
+            page.drawText(`Total de Horas: ${totalHoras}`, { x: 50, y: 330, size: 16, font, color: rgb(0, 0, 0) });
+
+            // Descargar el PDF combinado
+            const pdfBytes = await pdfDoc.save();
+            const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'Resumen_Actividades_140.pdf';
+            link.click();
+        });
+
 
             // Inicializar el formulario con el primer archivo
             addFileForm();
