@@ -294,39 +294,46 @@ function validarCantidadRevisados(n_validos, n_invalidos,estudianteExce, estado_
 
 /**AQUI SE ENVIA A CAMBIAR EL ESTADO DE LA SOLICITUD A NO APROBADO EN LA BASE DE DATOS */
 $("#enviar-rectificar").click(function () { 
-
-    document.getElementById('enviar-rectificar').disabled=true;
-
-    const postData = {
-        id: SOLICITUD_ESTUDIANTE
-    };
+    document.getElementById('enviar-rectificar').disabled = true;
+    const postData = { id: SOLICITUD_ESTUDIANTE };
 
     $.post("../../controller/coordinador/invalidar-solicitud.php", postData, function (e) {
         let respuesta = JSON.parse(e);
                     
-            if(respuesta == "Fallo1"){
-                toastr["warning"]("UPS! Ha ocurrido un error, intentelo de nuevo","Err1");
-                document.getElementById('enviar-rectificar').disabled=false;
-            }else if(respuesta == "Fallo2"){
-                toastr["warning"]("UPS! Ha ocurrido un error, intentelo de nuevo","Err2");
-                document.getElementById('enviar-rectificar').disabled=false;
-            }else{
-                toastr["success"]("Se ha validado ha enviado a rectificar la solicitud.");
-
-                 /**SE ENVIA EL CORREO AL ESTUDIANTE */
-                let correo = CORREO_ESTUDIANTE;
-
-                // Ocultar el botón
-                $(this).hide();
-
-                $.post("../../controller/coordinador/enviar-correo-expediente.php", {correo}, function(response){
-                    toastr["warning"](response);
-                });
-            }
+        if(respuesta == "Fallo1"){
+            toastr["warning"]("UPS! Ha ocurrido un error, intentelo de nuevo","Err1");
+            document.getElementById('enviar-rectificar').disabled = false;
+        } else if(respuesta == "Fallo2"){
+            toastr["warning"]("UPS! Ha ocurrido un error, intentelo de nuevo","Err2");
+            document.getElementById('enviar-rectificar').disabled = false;
+        } else {
+            toastr["success"]("Se ha validado ha enviado a rectificar la solicitud.");
             
+            // Mostrar la modal para el mensaje personalizado
+            $('#modalMensajeCorreo').modal('show');
+        }
     });
+});
 
+// Manejar el envío del correo con el mensaje personalizado
+$("#confirmarEnvioCorreo").click(function() {
+    let correo = CORREO_ESTUDIANTE;
+    let mensajePersonalizado = $("#mensajePersonalizado").val();
     
+    // Ocultar el botón original
+    $("#enviar-rectificar").hide();
+    
+    // Cerrar la modal
+    $('#modalMensajeCorreo').modal('hide');
+    
+    // Enviar el correo con el mensaje personalizado
+    $.post("../../controller/coordinador/enviar-correo-expediente.php", 
+    {
+        correo: correo,
+        mensaje: mensajePersonalizado
+    }, function(response) {
+        toastr["warning"](response);
+    });
 });
 
 

@@ -260,7 +260,6 @@ $(document).on("click", "#ir-buscar", function(){
     } else {
         
         $.get("../../controller/coordinador/buscar-observaciones-doc.php", getData, function (e) {
-         co
             let estudiante = JSON.parse(e);
             
             let template="";
@@ -270,7 +269,7 @@ $(document).on("click", "#ir-buscar", function(){
                  <tr user-id="${estudiante.id_estudiante}" scope="row">
                      <th>${estudiante.id_estudiante}</th>
                      <td>${estudiante.nombres_estudiante} ${estudiante.apellidos_estudiante}</td>
-                     <td>${estudiante.numero_cuenta_estudiante}</td>
+                     <td>${estudiante.numero_cuenta}</td>
                      <td>${estudiante.nombre_archivo}</td>
                      <td>${estudiante.descripcion}</td>
                  </tr>
