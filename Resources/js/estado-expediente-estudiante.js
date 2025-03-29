@@ -267,7 +267,7 @@
 
 
     $(document).on("click", ".subir", function() {
-    console.log("Botón 'Subir' presionado"); // Mensaje de depuración
+
 
     let button = $(this);
     button[0].disabled = true;
@@ -277,7 +277,6 @@
     let element_archivo = button[0].parentElement.parentElement.getElementsByClassName("doc-estudiante")[0].getElementsByClassName("doc")[0]; // ACCEDEMOS DONDE ESTA EL ARCHIVO CARGADO
     let archivo = $(element_archivo).prop('files')[0]; // OBTENEMOS EL ARCHIVO CARGADO
 
-    console.log("Archivo seleccionado:", archivo); // Mensaje de depuración
 
     if (!archivo) {
         button[0].disabled = false;
@@ -329,7 +328,6 @@
                     formData.append('extension', extension);
                     formData.append('id_solicitud', id_solicitud);
 
-                    console.log("Datos del formulario:", formData); // Mensaje de depuración
 
                     $.ajax({
                         data: formData,
@@ -338,7 +336,6 @@
                         contentType: false,
                         processData: false,
                         success: function(e) {
-                            console.log("Respuesta del servidor:", e); // Mensaje de depuración
                             if (e == "Error") {
                                 toastr["error"]("Ups! Ha ocurrido un error, inténtelo de nuevo");
                             } else {

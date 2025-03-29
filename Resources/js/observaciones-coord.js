@@ -174,7 +174,6 @@ function inicializar(){
 /**FUNCION PARA OBTENER NUMERO DE ESTUDIANTES POR VALIDAR Y MANDAR A CREAR PAGINACION PARA LA VISTA DE LOS DOCUMENTOS */
 function numeroEstudiantes() {
     $.get("../../controller/coordinador/cantidad-observaciones.php", function (e) {
-        console.log("Respuesta del servidor:", e); // <-- Agregar esto
         var cantidad_est = parseInt(e.trim(), 10);
 
         if (isNaN(cantidad_est) || cantidad_est <= 0) {
@@ -220,7 +219,6 @@ function mostrarObservaciones(limiter, offset) {
     }
  
     $.get("../../controller/coordinador/lista-documentos.php", getData, function (e) {
-        console.log("Respuesta del backend:", e);
         let estudiantes = JSON.parse(e);
         let template = "";
  

@@ -124,7 +124,6 @@ $(document).on("click", "#cambiar-pass", function(){
 
            let respuesta = JSON.parse(e);
 
-           console.log(respuesta);
 
            if(respuesta){
                document.getElementById("pass-act").className = "form-control";
@@ -200,7 +199,6 @@ function crearPaginacionInfo(cantidad_est) {
         totalPages: numero_paginas,
         visiblePages: 5,
         onPageClick: function (event, page) {
-            console.log("Página seleccionada:", page); // Depuración
             var offset = (page - 1) * LIMIT_STUDENTS_TABLE;
             mostrarObservacionesInfo(LIMIT_STUDENTS_TABLE, offset);
         }

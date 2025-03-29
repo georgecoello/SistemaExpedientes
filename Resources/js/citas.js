@@ -247,7 +247,7 @@ function mostrarEstudiantes(limiter, offset){
     $.get("../../controller/coordinador/listar-citas.php", getData, function (e) {
         
             let estudiante = JSON.parse(e);
-            console.log(e);
+            
             let template="";
 
             estudiante.forEach(estudiante => {
