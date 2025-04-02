@@ -351,7 +351,7 @@
                                                     <button class="btn btn-info btn-sm ver-comentarios" id='ver-comentarios-4' disabled>Ver Comentarios</button>
                                                 </td>
                                                <td>
-                                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#agregar-documento">Art. 140</button>
+                                                    <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#agregar-documento">Generar Documento</button>
                                                </td>
                                                 <td class='doc-estudiante'>
                                                     <input type="file" class="form-control-file doc" aria-describedby="fileHelp">

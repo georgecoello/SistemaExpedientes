@@ -324,10 +324,10 @@
                                             </tr>
                                             <tr>
                                                 <td class="doc-estudiante" colspan="4">
-                                                <small><b>En caso de tener más de una constancia de Horas Artículo 140 (VOAE), seleccione el botón (Subir Constancias) para ingresar todas las constancias que usted tenga, y luego suba el documento generado con todas las constancias que usted ingresó.</b></small><br>
+                                                <small><b>En caso de tener más de una Constancia de Horas Artículo 140, presione el botón "Generar Documento Combinado", descargue el archivo generado y súbalo en el enunciado de <u>Constancias de Horas Artículo 140 (VOAE)</u></b></small><br>
                                                 <br>
                                                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#activityModal" style="color: white;">
-                                                        <small><b>Subir Constancias</b></small>
+                                                        <small><b>Generar Documento Combinado</b></small>
                                                     </button>
                                                 </td>
                                             </tr>

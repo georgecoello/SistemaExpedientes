@@ -820,7 +820,6 @@ if(strcmp($_SESSION['modulo'],'2') !== 0){
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button type="button" class="btn btn-primary" id="confirmarEnvioCorreo">Enviar correo</button>
                 </div>
             </div>
